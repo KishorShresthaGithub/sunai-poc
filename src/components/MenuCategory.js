@@ -28,7 +28,11 @@ function MenuCategory(props) {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <button type="button" onClick={() => handleClick(post.short_name)}>
+            <button
+              type="button"
+              className="link"
+              onClick={() => handleClick(post.short_name)}
+            >
               {post.name}
             </button>
           </li>

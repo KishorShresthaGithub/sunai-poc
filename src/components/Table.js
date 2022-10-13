@@ -8,13 +8,13 @@ function Table({ data, column }) {
       <thead>
         <tr>
           {column.map((item) => (
-            <TableHeadItem item={item} />
+            <TableHeadItem key={JSON.stringify(item)} item={item} />
           ))}
         </tr>
       </thead>
       <tbody>
         {data.map((item) => (
-          <TableRow item={item} column={column} />
+          <TableRow key={JSON.stringify(item)} item={item} column={column} />
         ))}
       </tbody>
     </table>
@@ -31,10 +31,10 @@ function TableHeadItem({ item }) {
   );
 }
 
-const Column = {
+const Column = PropType.exact({
   heading: PropType.string,
   value: PropType.string,
-};
+});
 
 const TableHeadItemProp = {
   item: Column.isRequired,
@@ -52,14 +52,25 @@ function TableRow({ item, column }) {
   );
 }
 
+const Item = PropType.exact({
+  id: PropType.number,
+  name: PropType.string,
+  description: PropType.string,
+  short_name: PropType.string,
+  small_portion_name: PropType.string,
+  large_portion_name: PropType.string,
+  price_small: PropType.number,
+  price_large: PropType.number,
+});
+
 TableRow.propTypes = {
-  item: PropType.objectOf(PropType.string).isRequired,
+  item: Item.isRequired,
   column: PropType.arrayOf(Column).isRequired,
 };
 
 Table.propTypes = {
   column: PropType.arrayOf(Column).isRequired,
-  data: PropType.arrayOf(PropType.objectOf(PropType.string)).isRequired,
+  data: PropType.arrayOf(Item).isRequired,
 };
 
 export default Table;

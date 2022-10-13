@@ -8,20 +8,18 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   return (
-    <div>
-      <h1>Menu Categories</h1>
-      <div>
-        <Container>
-          <Row>
-            <Col>
-              <MenuCategory onClick={setSelectedCategory} />
-            </Col>
-            <Col>
-              <MenuItem id={selectedCategory} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
+    <>
+      <Container className="mt-5">
+        <Row>
+          <Col md="3">
+            <h2 className="text-left">Menu Categories</h2>
+            <MenuCategory onClick={setSelectedCategory} />
+          </Col>
+          <Col md="9">
+            <MenuItem id={selectedCategory} />
+          </Col>
+        </Row>
+      </Container>
       {/* <div>
         <Vegetables />
         <Ceviche />
@@ -31,7 +29,7 @@ function App() {
         <SideOrders />
         <Desserts />
       </div> */}
-    </div>
+    </>
   );
 }
 

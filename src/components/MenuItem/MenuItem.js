@@ -30,8 +30,7 @@ function MenuItem(props) {
     <div>
       <h2>
         Items in Category:(
-        {id}
-        {' '}
+        {id || 'All'}
         )
       </h2>
       <Table data={dataTable} column={column} />
