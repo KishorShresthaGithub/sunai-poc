@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import './App.css';
+import MenuCategory from './components/MenuCategory';
+import MenuItem from './components/MenuItem';
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Menu Categories</h1>
+      <div>
+        <Container>
+          <Row>
+            <Col>
+              <MenuCategory onClick={setSelectedCategory} />
+            </Col>
+            <Col>
+              <MenuItem id={selectedCategory} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      {/* <div>
+        <Vegetables />
+        <Ceviche />
+        <MeatAndpoultry />
+        <SeaFood />
+        <Paella />
+        <SideOrders />
+        <Desserts />
+      </div> */}
     </div>
   );
 }
